@@ -15,6 +15,7 @@ public class SeleniumTask {
 
     @Test
     public void homePageIsDisplayed() {
+
         WebDriver driver = new EdgeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
