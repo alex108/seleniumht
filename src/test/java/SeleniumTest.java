@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Selenium {
+public class SeleniumTest {
     @Test
     public void homePageIsDisplayed() {
 
@@ -24,8 +24,8 @@ public class Selenium {
         WebElement homePage = driver.findElement(By.cssSelector("#site-menu a[href='https://litecart.stqa.ru/en/']"));
         homePage.click();
 
-        String expectedTitlePage = driver.getTitle();
-        String actualTitlePage = "Online Store | My Store";
+        String expectedTitlePage = "Online Store | My Store";
+        String actualTitlePage = driver.getTitle();
 
         Assert.assertEquals(actualTitlePage, expectedTitlePage);
 
@@ -64,8 +64,7 @@ public class Selenium {
         WebElement subcategoryPage = driver.findElement(By.cssSelector("#site-menu a[href='https://litecart.stqa.ru/en/rubber-ducks-c-1/subcategory-c-2/']"));
 
         Actions builder = new Actions(driver);
-        builder.moveToElement(rubberPage).build().perform();
-        builder.moveToElement(subcategoryPage).click().build().perform();
+        builder.moveToElement(rubberPage).moveToElement(subcategoryPage).click().build().perform();
 
         WebElement nameSubcategory = driver.findElement(By.tagName("h1"));
         String actualSubcategoryName = nameSubcategory.getText();
@@ -94,8 +93,8 @@ public class Selenium {
         WebElement loginSelector = driver.findElement(By.name("login"));
         loginSelector.click();
 
-        String actualSuccessLogin = "You are now logged in as Alex Tish.";
-        String expectedSuccessTextLogin = driver.findElement(By.cssSelector(".notice.success")).getText();
+        String expectedSuccessTextLogin = "You are now logged in as Alex Tish.";
+        String actualSuccessLogin = driver.findElement(By.cssSelector(".notice.success")).getText();
 
         Assert.assertEquals(actualSuccessLogin, expectedSuccessTextLogin);
 
@@ -160,8 +159,8 @@ public class Selenium {
         WebElement saveButtonSelector = driver.findElement(By.name("save"));
         saveButtonSelector.click();
 
-        String actualSuccessEdit = "Changes saved";
-        String expectedSuccessEdit = driver.findElement(By.cssSelector(".notice.success")).getText();
+        String expectedSuccessEdit = "Changes saved";
+        String actualSuccessEdit = driver.findElement(By.cssSelector(".notice.success")).getText();
 
         Assert.assertEquals(actualSuccessEdit, expectedSuccessEdit);
 
@@ -186,8 +185,8 @@ public class Selenium {
         WebElement loginSelector = driver.findElement(By.name("login"));
         loginSelector.click();
 
-        String actualErrorTextLoginOrPassword = "Wrong password or the account is disabled, or does not exist";
-        String expectedErrorTextLoginOrPassword = driver.findElement(By.cssSelector(".notice.errors")).getText();
+        String expectedErrorTextLoginOrPassword = "Wrong password or the account is disabled, or does not exist";
+        String actualErrorTextLoginOrPassword = driver.findElement(By.cssSelector(".notice.errors")).getText();
 
         Assert.assertEquals(actualErrorTextLoginOrPassword, expectedErrorTextLoginOrPassword);
 
@@ -215,8 +214,8 @@ public class Selenium {
         WebElement logoutSelector = driver.findElement(By.cssSelector("#box-account a[href='https://litecart.stqa.ru/en/logout']"));
         logoutSelector.click();
 
-        String actualSuccessLogout = "You are now logged out.";
-        String expectedSuccessTextLogout = driver.findElement(By.cssSelector(".notice.success")).getText();
+        String expectedSuccessTextLogout = "You are now logged out.";
+        String actualSuccessLogout = driver.findElement(By.cssSelector(".notice.success")).getText();
 
         Assert.assertEquals(actualSuccessLogout, expectedSuccessTextLogout);
 
